@@ -37,5 +37,5 @@ end
 vim.api.nvim_create_user_command(
     "Align",
     align_selection_by_str,
-    { desc = "Align selection based on string argument", range = true, nargs = "*" }
+    { desc = "Align selection based on string argument", range = true, nargs = 1 }
 )
