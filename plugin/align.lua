@@ -1,16 +1,16 @@
 local function align_selection_by_str(args)
-    local line_start = args.line1 - 1
+    local line_start = args.line1
     local line_end = args.line2
 
-    if (line_start + 1) == line_end then
+    if line_end - line_start <= 0 then
         print("No selection, nothing to align")
         return
     end
 
-    local match_target = args.fargs[1]
+    local match_target = args.args
     local furthest_right = -1
     local align_match_idxs = {}
-    local lines = vim.api.nvim_buf_get_lines(0, line_start, line_end, false)
+    local lines = vim.api.nvim_buf_get_lines(0, line_start - 1, line_end, false)
 
     for i, line in ipairs(lines) do
         local pos = string.find(line, match_target)
@@ -31,11 +31,11 @@ local function align_selection_by_str(args)
             .. string.sub(line, align_match_idx)
     end
 
-    vim.api.nvim_buf_set_lines(0, line_start, line_end, false, lines)
+    vim.api.nvim_buf_set_lines(0, line_start - 1, line_end, false, lines)
 end
 
 vim.api.nvim_create_user_command(
     "Align",
     align_selection_by_str,
-    { desc = "Align selection based on string argument", range = true, nargs = 1 }
+    { desc = "Align selection based on string argument", range = true, nargs = "*" }
 )
