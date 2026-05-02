@@ -1,6 +1,6 @@
 # align.nvim - teeny tiny align-by-string plugin for NeoVim
 
-![demo][./assets/demo.gif] "Simple of align.nvim"
+![demo](./assets/demo.gif)
 
 ## Install
 
