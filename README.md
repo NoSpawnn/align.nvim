@@ -7,5 +7,14 @@
 ### Lazy
 
 ```lua
-{ "nospawnn/align.nvim" }
+{ "NoSpawnn/align.nvim" }
 ```
+
+## Commands
+
+- `:Align <string>`
+    - Align a visual mode selection to the right-most occurrence of <string>
+
+## TODO
+- `:AlignRegexp` command
+- Probably other stuff...
